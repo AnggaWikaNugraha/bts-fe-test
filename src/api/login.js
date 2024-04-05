@@ -49,3 +49,51 @@ export function loginAction(values, history) {
     })
   };
 }
+
+export function createCeklisAction(values, history) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+
+      const { StatusPageReducer } = getState();
+      const config = {
+        headers: { Authorization: `Bearer ${StatusPageReducer.token}` }
+      };
+
+      axios.post(`${PATH}/checklist`, {
+        name: values.name,
+      }, config)
+      .then((res) => {
+        dispatch(getCeklisAction());
+        alert('/Berhasil create ceklist')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    })
+  };
+}
+
+export function getCeklisAction() {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+
+      const { StatusPageReducer } = getState();
+      const config = {
+        headers: { Authorization: `Bearer ${StatusPageReducer.token}` }
+      };
+
+      axios.get(`${PATH}/checklist`, config)
+      .then((res) => {
+        dispatch({
+          type: 'SET_DATA_CEKLIS',
+          payload: res.data.data,
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    })
+  };
+}

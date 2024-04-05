@@ -2,6 +2,7 @@ import React from 'react';
 import SignUp from './pages/register';
 import SignIn from './pages/login';
 import Home from './pages/home';
+import Ceklis from './pages/ceklis';
 
 
 /**
@@ -22,7 +23,7 @@ const ROUTERS = [
   },
   {
     path: '/',
-    Component: Home,
+    Component: Ceklis,
     exact: true,
     isPrivate: true,
   },

@@ -6,6 +6,10 @@ const StatusPageState = {
   username: null,
 };
 
+const ceklisState = {
+ data: [],
+};
+
 export function StatusPageReducer(state = StatusPageState, action) {
   switch (action.type) {
     case Type.STATUS_PAGE_SET_MULTIPLE:
@@ -17,6 +21,18 @@ export function StatusPageReducer(state = StatusPageState, action) {
   }
 }
 
+export function ceklisStateReducer(state = ceklisState, action) {
+  switch (action.type) {
+    case 'SET_DATA_CEKLIS':
+      return { ...state, data: action.payload };
+    case 'RESET_DATA_CEKLIS':
+      return ceklisState;
+    default:
+      return state;
+  }
+}
+
 export default {
   StatusPageReducer,
+  ceklisStateReducer,
 };
