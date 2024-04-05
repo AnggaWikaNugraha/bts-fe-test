@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCeklisAction, getCeklisAction, loginAction } from '../api/login';
+import { createCeklisAction, deleteCeklisAction, getCeklisAction, loginAction } from '../api/login';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -58,7 +58,7 @@ export default function Ceklis() {
               <ListItem
                 key={value}
                 secondaryAction={
-                  <IconButton edge="end" aria-label="comments">
+                  <IconButton onClick={() => dispatch(deleteCeklisAction(value.id))} edge="end" aria-label="comments">
                     <CommentIcon />
                   </IconButton>
                 }

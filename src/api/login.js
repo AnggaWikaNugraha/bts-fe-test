@@ -74,6 +74,28 @@ export function createCeklisAction(values, history) {
   };
 }
 
+export function deleteCeklisAction(checklistId) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+
+      const { StatusPageReducer } = getState();
+      const config = {
+        headers: { Authorization: `Bearer ${StatusPageReducer.token}` }
+      };
+
+      axios.delete(`${PATH}/checklist/${checklistId}`, config)
+      .then((res) => {
+        dispatch(getCeklisAction());
+        alert('/Berhasil delete ceklist')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    })
+  };
+}
+
 export function getCeklisAction() {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
