@@ -14,7 +14,7 @@ export function StatusPageReducer(state = StatusPageState, action) {
   switch (action.type) {
     case Type.STATUS_PAGE_SET_MULTIPLE:
       return { ...state, ...action.payload };
-    case Type.STATUS_PAGE_RESET_ALL:
+    case 'STATUS_PAGE_REDUCER_RESET':
       return StatusPageState;
     default:
       return state;

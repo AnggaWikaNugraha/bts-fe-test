@@ -48,9 +48,15 @@ export default function Ceklis() {
 
   return (
       <Container component="main" maxWidth="md">
+        <Button sx={{
+          marginTop: '100px'
+        }} onClick={() => {
+          dispatch({
+            type: 'STATUS_PAGE_REDUCER_RESET',
+          })
+        }}>Logout</Button>
         <CssBaseline />
-
-        <List sx={{ width: '100%', maxWidth: 360, marginTop: '200px', bgcolor: 'background.paper' }}>
+        <List sx={{ width: '100%', maxWidth: 360, marginTop: '100px', bgcolor: 'background.paper' }}>
           {ceklisStateReducer?.data?.map((value) => {
             const labelId = `checkbox-list-label-${value}`;
 
@@ -65,16 +71,18 @@ export default function Ceklis() {
                 disablePadding
               >
                 <ListItemButton role={undefined} 
-                  // onClick={handleToggle(value)} 
+                  onClick={() => {
+                    console.log(value)
+                  }} 
                   dense>
                   <ListItemIcon>
-                    <Checkbox
+                    {/* <Checkbox
                       edge="start"
-                      // checked={checked.indexOf(value) !== -1}
+                      checked={checked.indexOf(value) !== -1}
                       tabIndex={-1}
                       disableRipple
                       inputProps={{ 'aria-labelledby': labelId }}
-                    />
+                    /> */}
                   </ListItemIcon>
                   <ListItemText id={labelId} primary={`${value.name}`} />
                 </ListItemButton>
