@@ -3,7 +3,6 @@ import Type from './typeReducers';
 const StatusPageState = {
   isAuthenticated: false,
   token: null,
-  email: null,
   username: null,
 };
 
